@@ -4,7 +4,8 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   let cerina = {
     username: req.body.username,
-    password: req.body.password 
+    password: req.body.password,
+    email: req.body.email
   };
   Cerina.create(cerina)
     .then(data => {
@@ -39,9 +40,10 @@ exports.findOne = (req,res) => {
   });
 };
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
-  Cerina.findAll({ where: condition })
+  // const title = req.query.title;
+  // var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+  // Cerina.findAll({ where: condition })
+    Cerina.findAll()
     .then(data => {
       res.send(data);
     })

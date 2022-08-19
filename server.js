@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
-app.use(cors());
+var corsOptions = {
+  origin: "http://localhost:4200"
+};
+app.use(cors(corsOptions));
 const route =require("./routes/cerina.routes")(app);
 const db = require("./models");
 db.sequelize.sync()
